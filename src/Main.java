@@ -1,35 +1,23 @@
 public class Main {
+
     public static void main(String[] args) {
 
-        CoffeePotModel pot = new CoffeePotModel(20);
+        CoffeePotView view = new CoffeePotView();
 
-        // Test brewing coffee
-        pot.brew(10);
-        System.out.println("After brewing: " + pot.getCurrentVolume());
+        boolean running = true;
 
-        // Test pouring coffee
-        pot.pour(5);
-        System.out.println("After pouring: " + pot.getCurrentVolume());
+        while (running) {
 
-        // Test exceeding capacity
-        try {
-            pot.brew(20);
-        } catch (IllegalStateException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+            view.showMenu();
 
-        // Test pouring too much coffee
-        try {
-            pot.pour(20);
-        } catch (IllegalStateException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+            String input = view.getUserInput();
 
-        // Test negative amount
-        try {
-            pot.brew(-5);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+            view.displayMessage("You entered: " + input);
+
+            if (input.equalsIgnoreCase("exit")) {
+                running = false;
+                view.displayMessage("Goodbye!");
+            }
         }
     }
 }
