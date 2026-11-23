@@ -25,3 +25,13 @@ When the user types a command, the View receives the input and passes it to the 
 I also added error handling so invalid commands and amounts display helpful messages instead of crashing the program.
 
 I learned that the Controller manages the application's logic and connects the other two parts of the MVC pattern.
+
+---------
+
+## Phase 4: The Full Cycle (Integration)
+
+In this phase, I connected and improved the Model, View, and Controller. I updated the Controller to automatically display the current coffee volume after successful brewing and pouring.
+
+I also added better error handling for invalid commands, missing amounts, and non-numeric input. The exit command now properly stops the program.
+
+The hardest part was connecting all three classes and making sure they worked together. Separating the Model, View, and Controller made error handling easier because each class has its own responsibility. The Model protects the coffee pot's data, the View displays messages, and the Controller handles commands and errors.

@@ -18,10 +18,14 @@ public class CoffeePotController {
 
             view.showMenu();
 
-            String input = view.getUserInput();
+            String input = view.getUserInput().trim();
 
-            // Split the command into parts
-            String[] parts = input.trim().split("\\s+");
+            if (input.isEmpty()) {
+                view.displayMessage("Please enter a command.");
+                continue;
+            }
+
+            String[] parts = input.split("\\s+");
 
             String command = parts[0].toLowerCase();
 
@@ -29,23 +33,35 @@ public class CoffeePotController {
 
                 if (command.equals("brew")) {
 
+                    if (parts.length != 2) {
+                        view.displayMessage("Usage: brew <amount>");
+                        continue;
+                    }
+
                     int amount = Integer.parseInt(parts[1]);
+
                     model.brew(amount);
 
                     view.displayMessage("Coffee brewed successfully!");
+                    showStatus();
 
                 } else if (command.equals("pour")) {
 
+                    if (parts.length != 2) {
+                        view.displayMessage("Usage: pour <amount>");
+                        continue;
+                    }
+
                     int amount = Integer.parseInt(parts[1]);
+
                     model.pour(amount);
 
                     view.displayMessage("Coffee poured successfully!");
+                    showStatus();
 
                 } else if (command.equals("status")) {
 
-                    view.displayMessage(
-                            "Current coffee volume: " + model.getCurrentVolume()
-                    );
+                    showStatus();
 
                 } else if (command.equals("exit")) {
 
@@ -60,17 +76,20 @@ public class CoffeePotController {
 
             } catch (NumberFormatException e) {
 
-                view.displayMessage("Please enter a valid number.");
+                view.displayMessage("Invalid amount. Please enter a number.");
 
             } catch (IllegalArgumentException | IllegalStateException e) {
 
                 view.displayMessage("Error: " + e.getMessage());
 
-            } catch (ArrayIndexOutOfBoundsException e) {
-
-                view.displayMessage("Please enter an amount after brew or pour.");
-
             }
         }
+    }
+
+    // Display the current coffee volume
+    private void showStatus() {
+        view.displayMessage(
+                "Current coffee volume: " + model.getCurrentVolume()
+        );
     }
 }
