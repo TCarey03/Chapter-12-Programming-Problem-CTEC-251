@@ -35,3 +35,15 @@ In this phase, I connected and improved the Model, View, and Controller. I updat
 I also added better error handling for invalid commands, missing amounts, and non-numeric input. The exit command now properly stops the program.
 
 The hardest part was connecting all three classes and making sure they worked together. Separating the Model, View, and Controller made error handling easier because each class has its own responsibility. The Model protects the coffee pot's data, the View displays messages, and the Controller handles commands and errors.
+
+---------
+
+## Phase 5: Validation & Reflection
+
+In this phase, I tested my CoffeePot program using different commands and edge cases. I tested brewing up to the maximum capacity, trying to brew too much coffee, pouring all the remaining coffee, and attempting to pour more coffee than the pot contained.
+
+I also tested negative numbers, invalid amounts, and random commands to make sure the program handled errors without crashing.
+
+One important thing I verified was that the coffee pot never goes above its maximum capacity or below zero. I learned that separating the Model, View, and Controller makes a program easier to organize, test, and maintain.
+
+Overall, this assignment helped me better understand how the MVC pattern works and how the three components work together.
