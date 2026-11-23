@@ -2,22 +2,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Create the Model
+        CoffeePotModel model = new CoffeePotModel(20);
+
+        // Create the View
         CoffeePotView view = new CoffeePotView();
 
-        boolean running = true;
+        // Create the Controller
+        CoffeePotController controller =
+                new CoffeePotController(model, view);
 
-        while (running) {
-
-            view.showMenu();
-
-            String input = view.getUserInput();
-
-            view.displayMessage("You entered: " + input);
-
-            if (input.equalsIgnoreCase("exit")) {
-                running = false;
-                view.displayMessage("Goodbye!");
-            }
-        }
+        // Start the application
+        controller.start();
     }
 }
